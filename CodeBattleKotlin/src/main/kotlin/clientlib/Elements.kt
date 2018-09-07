@@ -1,4 +1,5 @@
 package clientlib
+
 enum class Elements(val element: Char, val power: Int = 0) {
 
     NONE(' '),
@@ -46,7 +47,5 @@ enum class Elements(val element: Char, val power: Int = 0) {
 
     WORM_HOLE('ʘ');
 
-    override fun toString(): String {
-        return element.toString()
-    }
+    override fun toString(): String = element.toString()
 }

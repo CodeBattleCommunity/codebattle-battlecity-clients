@@ -36,25 +36,15 @@ abstract class Solver {
         throw IllegalArgumentException("No such element for $ch")
     }
 
-    protected fun act(): String {
-        return "ACT"
-    }
+    protected fun act(): String = "ACT"
 
-    protected fun up(): String {
-        return "UP"
-    }
+    protected fun up(): String = "UP"
 
-    protected fun down(): String {
-        return "DOWN"
-    }
+    protected fun down(): String = "DOWN"
 
-    protected fun left(): String {
-        return "LEFT"
-    }
+    protected fun left(): String = "LEFT"
 
-    protected fun right(): String {
-        return "RIGHT"
-    }
+    protected fun right(): String = "RIGHT"
 
     abstract fun move(): String
 }
