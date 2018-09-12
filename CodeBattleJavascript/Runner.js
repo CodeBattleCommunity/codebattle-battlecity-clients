@@ -380,8 +380,14 @@ var Board = function(board){
     return findAll(Element.HEDGEHOG);
   }
 
-  var getBarreries = function () {
+  var getWalls = function () {
+      return findAll(Element.BATTLE_WALL)
+  }
+
+  var getBarriers = function () {
     var all = getConstructions();
+    all = all.concat(getWalls());
+    all = all.concat(getConstructions());
     all = all.concat(getDestroyedConstructions());
     all = all.concat(getOtherPlayersTanks());
     all = all.concat(getBotsTanks());
