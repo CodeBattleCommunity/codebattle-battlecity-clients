@@ -122,7 +122,7 @@ class Board:
         return self._find_all(Element('HEDGEHOG'))
 
     def get_walls(self):
-        return self._find_all(Element('WALL'))
+        return self._find_all(Element('BATTLE_WALL'))
 
     def get_barriers(self):
         points = set()
