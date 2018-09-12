@@ -121,7 +121,7 @@ class Board:
     def get_hedgehogs(self):
         return self._find_all(Element('HEDGEHOG'))
 
-    def get_barreries(self):
+    def get_barriers(self):
         points = set()
         points.update(self.get_destroyed_constructions())
         points.update(self.get_other_players_tanks())
