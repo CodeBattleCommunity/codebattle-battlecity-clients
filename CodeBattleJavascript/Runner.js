@@ -146,6 +146,8 @@ var Element = {
   MOAT_HORIZONTAL : '=',
   MOAT_VERTICAL : '‖',
   HEDGEHOG : 'ͱ',
+  BONUS_AMMO : '◊',
+  MEDICINE : '☺',
 
   BATTLE_WALL : '☼',
   BANG : 'Ѡ',
@@ -381,7 +383,15 @@ var Board = function(board){
   }
 
   var getWalls = function () {
-      return findAll(Element.BATTLE_WALL)
+      return findAll(Element.BATTLE_WALL);
+  }
+
+  var getBonusAmmo = function () {
+      return findAll(Element.BONUS_AMMO);
+  }
+
+  var getMedKits = function () {
+      return findAll(Element.MEDICINE);
   }
 
   var getBarriers = function () {
@@ -499,6 +509,9 @@ var Board = function(board){
         getSands : getSands,
         getMoats :  getMoats,
         getHedgehogs : getHedgehogs,
+        getWalls : getWalls,
+        getBonusAmmo : getBonusAmmo,
+        getMedKits : getMedKits,
         isAt : isAt,
         boardAsString : boardAsString,
         toString : toString,
