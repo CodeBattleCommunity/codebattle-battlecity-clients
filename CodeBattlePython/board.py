@@ -124,6 +124,12 @@ class Board:
     def get_walls(self):
         return self._find_all(Element('BATTLE_WALL'))
 
+    def get_bonus_ammo(self):
+        return self._find_all(Element('BONUS_AMMO'))
+    
+    def get_med_kits(self):
+        return self._find_all(Element('MEDICINE'))
+
     def get_barriers(self):
         points = set()
         points.update(self.get_walls())

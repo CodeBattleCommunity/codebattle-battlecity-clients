@@ -66,6 +66,8 @@ _ELEMENTS = dict(
     HEDGEHOG = 'ͱ',
     BATTLE_WALL = '☼',
     BANG = 'Ѡ',
+    BONUS_AMMO = '◊',
+    MEDICINE = '☺',
 
     NONE = ' '
 )
