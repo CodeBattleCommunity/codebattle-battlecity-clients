@@ -1,35 +1,22 @@
-# Примеры клиентов для реализации ботов для battlecity  
+# Welcome to CodeBattle: BattleCity
+## Как это работает?
+Необходимо подключиться из кода бота к серверу через вебсокет по адресу:
+`ws://${server_host}:${server_port}/codenjoy-contest/ws?user=${email}&code=${auth_code}`
+- `email` - email, указанынй при регистрации
+- `code` - автоматически сгенерированный код. Виден в query parameters в адресной строке браузера *(после регистрации)*
 
-* **game battlecity**  -> https://github.com/IzhevskCodeBattle/codebattle-game-battlecity
-* **server** ->  https://github.com/IzhevskCodeBattle/codebattle-server
+После подключения, клиент через вебсокет будет регулярно (каждую секунду) получать строку символов с закодированным состоянием игрового поля. 
+Само игровое поле извлекается из ответа сервера регулярным выражением:
+```
+^board=(.*)$
+```
 
-### Cписок рекомендованных методов-хелперов
-Примеры реализации ботов для battlecity должны содержать в себе список методов-хелперов, которые упросят написание бота участниками мероприятия.
+Более подробно с правилами игры можно ознакомиться на [странице](Rules.md)
 
-### Cписок рекомендованных методов-хелперов:
-0. *getPlayerTank()* - возвращает координаты танка (своего)
-0. *getOtherPlayersTanks()* - возвращает координаты танков других игроков
-0. *getBotsTanks()* - возвращает координаты танков ботов
-0. *getBullets()* - возвращает координаты всех снарядов
-0. *getWormholes()* - возвращает координаты телепортов
-0. *getConstructions()* - возвращает координаты разрушаемых конструкций
-0. *getDestroyedConstructions()* - возвращает координаты поврежденных конструкций
-0. *getBogs()* - возвращает координаты болот
-0. *getSands()* - возвращает координаты клеток с песком
-0. *getMoats()* - возвращает координаты рвов
-0. *getHedgehogs()* - возвращает координаты ежей
-0. *getWalls()* - возвращает координаты непробиваемых стен
-0. *getBarriers()* - возвращает координаты барьеров на карте (walls + constructions + destroyedConstructions + otherPlayersTanks + botsTanks + hedgehogs)
-0. *getAmmoBonuses()* - возвращает координаты бонусов с патронами
-0. *getMedKitBonuses()* - возращает координаты бонусов с доп. жизнями
-0  *isAnyOfAt(x, y, elements)* - проверка на нахождения элементов в заданных координатах
-0. *isNear(x, y, element)* - проверка на наличие элемента в соседних клетках заданной координаты
-0. *isBarrierAt(x, y)* - проверка на наличие барьера в указанном месте
-0. *countNear(x, y, element)*
-0. *isAt(x, y, element)*
-
-`(Будет реализовано в случае допиливания сервера и возвращения информации клиенту)`
-
-0. *getLives()* - количество жизней танка
-0. *getAmmoCount()* - количество патронов танка
-
+#### Примеры клиентов (ботов)
+- Java - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleJava 
+- JavaScript - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleJs
+- C# - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleNet
+- Python (3.0+) - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattlePython
+- Kotlin - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleKotlin
+- C++ - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleCpp
