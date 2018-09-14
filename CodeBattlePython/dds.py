@@ -10,27 +10,26 @@
 # it under the terms of the GNU General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public
 # License along with this program.  If not, see
 # <http://www.gnu.org/licenses/gpl-3.0.html>.
 # #L%
 ###
 
-from time import time
-from random import choice
 from board import Board
 from element import Element
 from direction import Direction
 
+
 class DirectionSolver:
     """ This class should contain the movement generation algorythm."""
-    
+
     def __init__(self):
         self._direction = None
         self._board = None
@@ -42,13 +41,10 @@ class DirectionSolver:
         self._board = Board(board_string)
         _command = self.find_direction()
         print("Sending Command {}".format(_command))
-        return _command
+        return str(_command)
 
     def find_direction(self):
         """ This is an example of direction solver subroutine."""
-        _direction = Direction('NULL').to_string() 
-        print(self._board.to_String())
-        return Direction('DOWN').to_string()
-        
-if __name__ == '__main__':
-    raise RuntimeError("This module is not intended to be ran from CLI")
+        _direction = Direction('NULL')
+        print(self._board)
+        return Direction('DOWN')

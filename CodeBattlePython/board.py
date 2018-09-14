@@ -10,12 +10,12 @@
 # it under the terms of the GNU General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public
 # License along with this program.  If not, see
 # <http://www.gnu.org/licenses/gpl-3.0.html>.
@@ -26,12 +26,13 @@ from math import sqrt
 from point import Point
 from element import Element
 
+
 class Board:
     """ Class describes the Board field for Battlecity game."""
     def __init__(self, board_string):
         self._string = board_string.replace('\n', '')
         self._len = len(self._string)  # the length of the string
-        self._size = int(sqrt(self._len))  # size of the board 
+        self._size = int(sqrt(self._len))  # size of the board
         #print("Board size is sqrt", self._len, self._size)
 
     def _find_all(self, element):
@@ -40,10 +41,11 @@ class Board:
         _a_char = element.get_char()
         for i, c in enumerate(self._string):
             if c == _a_char:
-                 _points.append(self._strpos2pt(i))
+                _points.append(self._strpos2pt(i))
         return _points
 
-    def get_at(self, x, y):
+    @property
+    def at(self, x, y):
         """ Return an Element object at coordinates x,y."""
         return Element(self._string[self._xy2strpos(x, y)])
 
@@ -55,7 +57,8 @@ class Board:
         """ Return true if barrier is at x,y."""
         return Point(x, y) in self.get_barriers()
 
-    def get_player_tank(self):
+    @property
+    def player_tank(self):
         points = set()
         points.update(self._find_all(Element('TANK_UP')))
         points.update(self._find_all(Element('TANK_DOWN')))
@@ -63,7 +66,8 @@ class Board:
         points.update(self._find_all(Element('TANK_RIGHT')))
         return list(points)[0]
 
-    def get_other_players_tanks(self):
+    @property
+    def other_players_tanks(self):
         points = set()
         points.update(self._find_all(Element('OTHER_TANK_UP')))
         points.update(self._find_all(Element('OTHER_TANK_DOWN')))
@@ -71,7 +75,8 @@ class Board:
         points.update(self._find_all(Element('OTHER_TANK_RIGHT')))
         return list(points)
 
-    def get_bots_tanks(self):
+    @property
+    def bots_tanks(self):
         points = set()
         points.update(self._find_all(Element('AI_TANK_UP')))
         points.update(self._find_all(Element('AI_TANK_DOWN')))
@@ -79,16 +84,20 @@ class Board:
         points.update(self._find_all(Element('AI_TANK_RIGHT')))
         return list(points)
 
-    def get_bullets(self):
+    @property
+    def bullets(self):
         return self._find_all(Element('BULLET'))
-    
-    def get_worm_holes(self):
+
+    @property
+    def worm_holes(self):
         return self._find_all(Element('WORM_HOLE'))
 
-    def get_constructions(self):
+    @property
+    def constructions(self):
         return self._find_all(Element('CONSTRUCTION'))
-    
-    def get_destroyed_constructions(self):
+
+    @property
+    def destroyed_constructions(self):
         points = set()
         points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN')))
         points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_UP')))
@@ -106,31 +115,39 @@ class Board:
         points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN_RIGHT')))
         return list(points)
 
-    def get_bogs(self):
+    @property
+    def bogs(self):
         return self._find_all(Element('BOG'))
 
-    def get_sands(self):
+    @property
+    def sands(self):
         return self._find_all(Element('SAND'))
-    
-    def get_moats(self):
+
+    @property
+    def moats(self):
         points = set()
         points.update(self._find_all(Element('MOAT_HORIZONTAL')))
         points.update(self._find_all(Element('MOAT_VERTICAL')))
         return list(points)
-    
-    def get_hedgehogs(self):
+
+    @property
+    def hedgehogs(self):
         return self._find_all(Element('HEDGEHOG'))
 
-    def get_walls(self):
+    @property
+    def walls(self):
         return self._find_all(Element('BATTLE_WALL'))
 
-    def get_bonus_ammo(self):
+    @property
+    def bonus_ammo(self):
         return self._find_all(Element('BONUS_AMMO'))
-    
-    def get_med_kits(self):
+
+    @property
+    def med_kits(self):
         return self._find_all(Element('MEDICINE'))
 
-    def get_barriers(self):
+    @property
+    def barriers(self):
         points = set()
         points.update(self.get_walls())
         points.update(self.get_constructions())
@@ -139,7 +156,7 @@ class Board:
         points.update(self.get_bots_tanks())
         points.update(self.get_hedgehogs())
         return list(points)
-  
+
     def is_near(self, x, y, elem):
         _is_near = False
         if not Point(x, y).is_bad(self._size):
@@ -158,13 +175,13 @@ class Board:
                     _near_count += 1
         return _near_count
 
-    def to_String(self):
+    def __str__(self):
         return ("Board:\n{brd}\nTank at: {tnk}\nOther tanks at: {otk}\n"
                 "Bot tanks at: {btk}\nHedgehogs at: {hgh}\nMoats at: {mat}\n"
                 "Bogs at: {bog}\nSands at: {snd}".format(
                         brd = self._line_by_line(),
                         tnk = self.get_player_tank(),
-                        otk = self.get_other_players_tanks(),  
+                        otk = self.get_other_players_tanks(),
                         btk = self.get_bots_tanks(),
                         hgh = self.get_hedgehogs(),
                         mat = self.get_moats(),
@@ -185,7 +202,3 @@ class Board:
 
     def _xy2strpos(self, x, y):
         return self._size * y + x
-
-
-if __name__ == '__main__':
-    raise RuntimeError("This module is not designed to be ran from CLI")
