@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
 
 private const val WS_URI_PATTERN = "ws://%s/codenjoy-contest/ws"
-private const val LENGTH_OF_BOARD = 1156
+private const val EXTRA_CHAR_OF_BOARD = 6
 var board: String = ""
 
 class WebSocketRunner(val solver: Solver) {
@@ -102,7 +102,7 @@ class WebSocketRunner(val solver: Solver) {
             }
 
             override fun onMessage(data: String) {
-                board = data.takeLast(LENGTH_OF_BOARD)
+                board = data.takeLast(data.length - EXTRA_CHAR_OF_BOARD)
                 print("Data from server: $data")
                 try {
                     val matcher = urlPattern.matcher(data)
