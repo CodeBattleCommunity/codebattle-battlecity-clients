@@ -5,27 +5,24 @@ enum class Elements(val element: Char, val power: Int = 0) {
     NONE(' '),
     BATTLE_WALL('☼'),
     BANG('Ѡ'),
+    BONUS_AMMO('◊'),
+    MEDKIT('☺'),
 
     CONSTRUCTION('╬', 3),
-
     CONSTRUCTION_DESTROYED_DOWN('╩', 2),
     CONSTRUCTION_DESTROYED_UP('╦', 2),
     CONSTRUCTION_DESTROYED_LEFT('╠', 2),
     CONSTRUCTION_DESTROYED_RIGHT('╣', 2),
-
     CONSTRUCTION_DESTROYED_DOWN_TWICE('╨', 1),
     CONSTRUCTION_DESTROYED_UP_TWICE('╥', 1),
     CONSTRUCTION_DESTROYED_LEFT_TWICE('╞', 1),
     CONSTRUCTION_DESTROYED_RIGHT_TWICE('╡', 1),
-
     CONSTRUCTION_DESTROYED_LEFT_RIGHT('│', 1),
     CONSTRUCTION_DESTROYED_UP_DOWN('─', 1),
-
     CONSTRUCTION_DESTROYED_UP_LEFT('┌', 1),
     CONSTRUCTION_DESTROYED_RIGHT_UP('┐', 1),
     CONSTRUCTION_DESTROYED_DOWN_LEFT('└', 1),
     CONSTRUCTION_DESTROYED_DOWN_RIGHT('┘', 1),
-
     CONSTRUCTION_DESTROYED(' ', 0),
 
     BULLET('•'),
@@ -45,7 +42,12 @@ enum class Elements(val element: Char, val power: Int = 0) {
     AI_TANK_DOWN('¿'),
     AI_TANK_LEFT('«'),
 
-    WORM_HOLE('ʘ');
+    WORM_HOLE('ʘ'),
+    SAND('□'),
+    MOAT_HORIZONTAL('='),
+    MOAT_VERTICAL('‖'),
+    HEDGEHOG('ͱ'),
+    BOG('@');
 
     override fun toString(): String = element.toString()
 }

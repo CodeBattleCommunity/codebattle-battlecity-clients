@@ -3,9 +3,9 @@ package clientlib
 abstract class Solver {
 
     /**
-     * The method of parsing the playing field. Called after server response.
+     * The method of parsing the playing board. Called after server response.
      *
-     * @param boardString playing field
+     * @param boardString playing board
      */
     fun parseField(boardString: String): Solver {
 

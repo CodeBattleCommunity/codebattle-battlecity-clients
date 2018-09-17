@@ -9,14 +9,18 @@ import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
 
 private const val WS_URI_PATTERN = "ws://%s/codenjoy-contest/ws"
+private const val LENGTH_OF_BOARD = 1156
+var board: String = ""
 
 class WebSocketRunner(val solver: Solver) {
+
 
     private val printToConsole = true
     private val clients = ConcurrentHashMap<String, WebSocketRunner>()
     private var connection: WebSocket.Connection? = null
     private var factory: WebSocketClientFactory? = null
     private var onClose: Runnable? = null
+
 
     fun run(serverLocation: String, userName: String, password: String, solver: Solver): WebSocketRunner? {
         val serverLocationWS = String.format(WS_URI_PATTERN, serverLocation)
@@ -85,7 +89,6 @@ class WebSocketRunner(val solver: Solver) {
         if (connection != null) {
             connection!!.close()
         }
-
         connection = client.open(uri, object : WebSocket.OnTextMessage {
             override fun onOpen(connection: WebSocket.Connection) {
                 print("Opened connection " + connection.toString())
@@ -99,6 +102,7 @@ class WebSocketRunner(val solver: Solver) {
             }
 
             override fun onMessage(data: String) {
+                board = data.takeLast(LENGTH_OF_BOARD)
                 print("Data from server: $data")
                 try {
                     val matcher = urlPattern.matcher(data)

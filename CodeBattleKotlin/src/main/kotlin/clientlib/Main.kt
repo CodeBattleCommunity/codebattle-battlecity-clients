@@ -5,6 +5,9 @@ const val USERNAME = "battlecity-super-ai@codenjoy.com"
 const val PASSWORD = "123456"
 
 fun main(args: Array<String>) {
-    WebSocketRunner(SampleSolver()).run(URL, USERNAME, PASSWORD, SampleSolver())
+    var runner = WebSocketRunner(SampleSolver())
+    runner.run(URL, USERNAME, PASSWORD, SampleSolver())
+
+
 }
 
