@@ -36,7 +36,7 @@ class Point:
         return "[{},{}]".format(self._x, self._y)
 
     def __repr__(self):
-        return self.to_string()
+        return "[{},{}]".format(self._x, self._y)
 
     def __eq__(self, other_point):
         return self.__key() == other_point.__key()
