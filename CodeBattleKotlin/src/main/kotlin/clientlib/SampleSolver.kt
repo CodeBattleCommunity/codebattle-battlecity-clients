@@ -2,8 +2,9 @@ package clientlib
 
 import clientlib.Elements.*
 import java.util.Scanner
+import kotlin.math.sqrt
 
-private const val SIZE_OF_BOARD = 34
+private val SIZE_OF_BOARD = sqrt(board.length.toDouble()).toInt()
 
 class SampleSolver : Solver() {
 
