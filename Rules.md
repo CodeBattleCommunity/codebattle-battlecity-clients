@@ -11,22 +11,45 @@
 Если не успел — танк остается на месте.
 
 ### Поле
-Поле поделено на клетки. В каждой клетке может находится один объект: 
-- танк игрока (свой)
-- вражеский танк
-- AI танк (если режим игры с AI) 
-- неразрушаемая стена
-- разрушаемая стена 
-- ёж (hedgehog - неразрушаемое препятствие через которое не может проехать танк, 
-но может через него стрелять, а также может быть подбит другим танков)
-- снаряд, выпущенный танком. Снаряд при попадании в танк отнимает 1 жизнь. 
-Если запас жизней танка = 0 - танк погибает. Каждый танк начинает игру с **1** жизнью. 
-- препятствия (песок и ров - замедляющие ход танка на 1 ход, 
-болото - если танк оказался в болоте он больше **не может** двигаться по карте до момента гибели)
-- Доп. патроны (увеличивающие запас доступных снарядов танка на **5**. 
-Начальное кол-во патронов танка = **10**)
-- Доп. жизнь (увеличивает запас жизней танка на **1**)
-- Телепорт - при входе в телепорт танк будет перемещен в случайный другой телепорт на карте 
+Поле поделено на клетки. В каждой клетке может находится один объект:
+ 
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/tank_left.png)
+ Танк игрока (свой)
+ 
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/other_tank_left.png)
+Вражеский танк
+
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/ai_tank_left.png) 
+AI танк (если режим игры с AI)
+ 
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/battle_wall.png)
+Неразрушаемая стена
+
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/construction.png) 
+Разрушаемая стена 
+
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/bullet.png)
+Снаряд, выпущенный танком. Снаряд при попадании в танк отнимает 1 жизнь. 
+Если запас жизней танка = 0 - танк погибает. Каждый танк начинает игру с **1** жизнью.
+
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/hedgehog.png) 
+Ёж (hedgehog - неразрушаемое препятствие через которое не может проехать танк, 
+но может через него стрелять, а также может быть подбит другим танком)
+ 
+- Препятствия :
+  - ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/sand.png)
+  Песок и ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/moat_horizontal.png) 
+  Ров - замедляющие ход танка на 1 ход. 
+  - ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/bog.png)
+  Болото - если танк оказался в болоте он больше **не может** двигаться по карте до момента гибели)
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/bonus_ammo.png)
+ Доп. патроны (увеличивающие запас доступных снарядов танка на **5**. 
+ Начальное кол-во патронов танка - будет определено на месте проведения мероприятия. 
+ После гибели танка - начальный запас боеприпасов восстанавливается)
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/medkit.png)
+Доп. жизнь (увеличивает запас жизней танка на **1**)
+- ![](https://github.com/IzhevskCodeBattle/codebattle-game-battlecity/raw/master/games/battlecity/src/main/webapp/resources/sprite/battlecity/worm_hole.png)
+Телепорт - при входе в телепорт танк будет перемещен в случайный другой телепорт на карте 
 (если выход из телепорт не занят других объектом). 
 
 
