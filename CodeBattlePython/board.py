@@ -44,45 +44,44 @@ class Board:
                 _points.append(self._strpos2pt(i))
         return _points
 
-    @property
     def at(self, x, y):
         """ Return an Element object at coordinates x,y."""
         return Element(self._string[self._xy2strpos(x, y)])
 
     def is_at(self, x, y, element_object):
         """ Return True if Element is at x,y coordinates."""
-        return element_object == self.get_at(x, y)
+        return element_object == self.at(x, y)
 
     def is_barrier_at(self, x, y):
         """ Return true if barrier is at x,y."""
-        return Point(x, y) in self.get_barriers()
+        return Point(x, y) in self.barriers
 
     @property
     def player_tank(self):
-        points = set()
-        points.update(self._find_all(Element('TANK_UP')))
-        points.update(self._find_all(Element('TANK_DOWN')))
-        points.update(self._find_all(Element('TANK_LEFT')))
-        points.update(self._find_all(Element('TANK_RIGHT')))
-        return list(points)[0]
+        points = []
+        points.extend(self._find_all(Element('TANK_UP')))
+        points.extend(self._find_all(Element('TANK_DOWN')))
+        points.extend(self._find_all(Element('TANK_LEFT')))
+        points.extend(self._find_all(Element('TANK_RIGHT')))
+        return points[0]
 
     @property
     def other_players_tanks(self):
-        points = set()
-        points.update(self._find_all(Element('OTHER_TANK_UP')))
-        points.update(self._find_all(Element('OTHER_TANK_DOWN')))
-        points.update(self._find_all(Element('OTHER_TANK_LEFT')))
-        points.update(self._find_all(Element('OTHER_TANK_RIGHT')))
-        return list(points)
+        points = []
+        points.extend(self._find_all(Element('OTHER_TANK_UP')))
+        points.extend(self._find_all(Element('OTHER_TANK_DOWN')))
+        points.extend(self._find_all(Element('OTHER_TANK_LEFT')))
+        points.extend(self._find_all(Element('OTHER_TANK_RIGHT')))
+        return points
 
     @property
     def bots_tanks(self):
-        points = set()
-        points.update(self._find_all(Element('AI_TANK_UP')))
-        points.update(self._find_all(Element('AI_TANK_DOWN')))
-        points.update(self._find_all(Element('AI_TANK_LEFT')))
-        points.update(self._find_all(Element('AI_TANK_RIGHT')))
-        return list(points)
+        points = []
+        points.extend(self._find_all(Element('AI_TANK_UP')))
+        points.extend(self._find_all(Element('AI_TANK_DOWN')))
+        points.extend(self._find_all(Element('AI_TANK_LEFT')))
+        points.extend(self._find_all(Element('AI_TANK_RIGHT')))
+        return points
 
     @property
     def bullets(self):
@@ -98,22 +97,22 @@ class Board:
 
     @property
     def destroyed_constructions(self):
-        points = set()
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_UP')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_LEFT')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_RIGHT')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN_TWICE')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_TWICE')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_LEFT_TWICE')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_RIGHT_TWICE')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_LEFT_RIGHT')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_DOWN')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_LEFT')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_RIGHT')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN_LEFT')))
-        points.update(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN_RIGHT')))
-        return list(points)
+        points = []
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_UP')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_LEFT')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_RIGHT')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN_TWICE')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_TWICE')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_LEFT_TWICE')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_RIGHT_TWICE')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_LEFT_RIGHT')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_DOWN')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_LEFT')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_UP_RIGHT')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN_LEFT')))
+        points.extend(self._find_all(Element('CONSTRUCTION_DESTROYED_DOWN_RIGHT')))
+        return points
 
     @property
     def bogs(self):
@@ -125,10 +124,10 @@ class Board:
 
     @property
     def moats(self):
-        points = set()
-        points.update(self._find_all(Element('MOAT_HORIZONTAL')))
-        points.update(self._find_all(Element('MOAT_VERTICAL')))
-        return list(points)
+        points = []
+        points.extend(self._find_all(Element('MOAT_HORIZONTAL')))
+        points.extend(self._find_all(Element('MOAT_VERTICAL')))
+        return points
 
     @property
     def hedgehogs(self):
@@ -148,14 +147,14 @@ class Board:
 
     @property
     def barriers(self):
-        points = set()
-        points.update(self.get_walls())
-        points.update(self.get_constructions())
-        points.update(self.get_destroyed_constructions())
-        points.update(self.get_other_players_tanks())
-        points.update(self.get_bots_tanks())
-        points.update(self.get_hedgehogs())
-        return list(points)
+        points = []
+        points.extend(self.walls)
+        points.extend(self.constructions)
+        points.extend(self.destroyed_constructions)
+        points.extend(self.other_players_tanks)
+        points.extend(self.bots_tanks)
+        points.extend(self.hedgehogs)
+        return points
 
     def is_near(self, x, y, elem):
         _is_near = False
@@ -180,13 +179,13 @@ class Board:
                 "Bot tanks at: {btk}\nHedgehogs at: {hgh}\nMoats at: {mat}\n"
                 "Bogs at: {bog}\nSands at: {snd}".format(
                         brd = self._line_by_line(),
-                        tnk = self.get_player_tank(),
-                        otk = self.get_other_players_tanks(),
-                        btk = self.get_bots_tanks(),
-                        hgh = self.get_hedgehogs(),
-                        mat = self.get_moats(),
-                        bog = self.get_bogs(),
-                        snd = self.get_sands()
+                        tnk = self.player_tank,
+                        otk = self.other_players_tanks,
+                        btk = self.bots_tanks,
+                        hgh = self.hedgehogs,
+                        mat = self.moats,
+                        bog = self.bogs,
+                        snd = self.sands
                 )
         )
 
