@@ -1,10 +1,18 @@
-bomberman
-=========
+battle-city
 
-websocket client app for Codenjoy Bomberman
-
+websocket client app for CodeBattle Battle-City
 Designed to be run with python3
 Depends on websocket-client from https://github.com/liris/websocket-client/blob/py3/websocket.py
 
-The bomberman actions logic should be extended by modifying the find_direction method in dds.py
-or by calling your own method from get() in the same dds.py
+## Prerequisites:
+
+```pip install -e .```
+
+*You need `pip` to be installed first*
+
+## Usage:
+
+Run client form command line:
+```
+battlecityclient
+```
