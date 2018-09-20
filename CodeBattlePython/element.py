@@ -41,7 +41,10 @@ _ELEMENTS = dict(
     CONSTRUCTION_DESTROYED_DOWN_LEFT = '└',
     CONSTRUCTION_DESTROYED_DOWN_RIGHT = '┘',
 
-    BULLET = '•',
+    BULLET_UP = '↥',
+    BULLET_DOWN = '↧',
+    BULLET_RIGHT = '↦',
+    BULLET_LEFT = '↤',
 
     AI_TANK_UP = '?',
     AI_TANK_RIGHT = '»',

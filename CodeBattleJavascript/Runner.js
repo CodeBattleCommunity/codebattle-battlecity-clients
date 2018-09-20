@@ -122,7 +122,10 @@ var Element = {
   CONSTRUCTION_DESTROYED_DOWN_LEFT : '└',
   CONSTRUCTION_DESTROYED_DOWN_RIGHT : '┘',
 
-  BULLET : '•',
+  BULLET_UP : '↥',
+  BULLET_DOWN : '↧',
+  BULLET_LEFT : '↤',
+  BULLET_RIGHT : '↦',
 
   AI_TANK_UP : '?',
   AI_TANK_RIGHT : '»',
@@ -330,7 +333,11 @@ var Board = function(board){
 
   var getBullets = function () {
     var result = [];
-    return result.concat(findAll(Element.BULLET));
+    result.concat(findAll(Element.BULLET_UP));
+    result.concat(findAll(Element.BULLET_DOWN));
+    result.concat(findAll(Element.BULLET_LEFT));
+    result.concat(findAll(Element.BULLET_RIGHT));
+    return result;
   }
 
   var getWormholes = function () {

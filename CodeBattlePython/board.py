@@ -85,7 +85,12 @@ class Board:
 
     @property
     def bullets(self):
-        return self._find_all(Element('BULLET'))
+        points = []
+        points.extend(self._find_all(Element('BULLET_UP')))
+        points.extend(self._find_all(Element('BULLET_DOWN')))
+        points.extend(self._find_all(Element('BULLET_LEFT')))
+        points.extend(self._find_all(Element('BULLET_RIGHT')))
+        return points
 
     @property
     def worm_holes(self):
