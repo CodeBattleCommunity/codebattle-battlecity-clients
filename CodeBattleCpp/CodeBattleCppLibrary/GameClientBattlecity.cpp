@@ -47,7 +47,11 @@ std::list<Point> GameClientBattlecity::get_bots_tanks() {
 	return bots;
 }
 std::list<Point> GameClientBattlecity::get_bullets() {
-	return find_all(BattlecityBlocks::BULLET);
+	std::list<Point> bullets = find_all(BattlecityBlocks::BULLET_UP);
+	bullets.splice(bullets.end(), find_all(BattlecityBlocks::BULLET_DOWN));
+	bullets.splice(bullets.end(), find_all(BattlecityBlocks::BULLET_LEFT));
+	bullets.splice(bullets.end(), find_all(BattlecityBlocks::BULLET_RIGHT));
+	return bullets;
 }
 std::list<Point> GameClientBattlecity::get_wormholes() {
 	return find_all(BattlecityBlocks::WORM_HOLE);

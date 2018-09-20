@@ -23,7 +23,10 @@ enum class BattlecityBlocks : uint16_t
 	CONSTRUCTION_DESTROYED_DOWN_LEFT = L'└',
 	CONSTRUCTION_DESTROYED_DOWN_RIGHT = L'┘',
 
-	BULLET = L'•',
+	BULLET_UP = L'↥',
+	BULLET_DOWN = L'↧',
+	BULLET_LEFT = L'↤',
+	BULLET_RIGHT = L'↦',
 
 	AI_TANK_UP = L'?',
 	AI_TANK_RIGHT = L'»',
