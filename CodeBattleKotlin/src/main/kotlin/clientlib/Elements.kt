@@ -49,5 +49,10 @@ enum class Elements(val element: Char, val power: Int = 0) {
     HEDGEHOG('ͱ'),
     BOG('@');
 
+    BULLET_UP('↥'),
+    BULLET_RIGHT('↦'),
+    BULLET_DOWN('↧'),
+    BULLET_LEFT('↤')
+
     override fun toString(): String = element.toString()
 }
