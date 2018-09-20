@@ -35,7 +35,7 @@ namespace CodeBattleNetLibrary
             }
 
             int rawPosition = 0;
-            for (int j = size - 1; j >= 0; j--)
+            for (int j = 0; j < size; j++)
             {
                 for (int i = 0; i < size; i++)
                 {
@@ -91,7 +91,12 @@ namespace CodeBattleNetLibrary
                 Elements.AI_TANK_RIGHT, 
                 Elements.AI_TANK_UP);
 
-        public List<Point> GetBullets() => FindingCoordinatesOfElements(Elements.BULLET);
+        public List<Point> GetBullets() => 
+            FindingCoordinatesOfElements(
+                Elements.BULLET_DOWN,
+                Elements.BULLET_LEFT,
+                Elements.BULLET_RIGHT,
+                Elements.BULLET_UP);
 
         public List<Point> GetWormholes() => FindingCoordinatesOfElements(Elements.WORM_HOLE);
 
@@ -172,7 +177,7 @@ namespace CodeBattleNetLibrary
         {
             List<Point> points = new List<Point>();
 
-            for (int j = MapSize - 1; j >= 0; j--)
+            for (int j = 0; j < MapSize; j++)
             {
                 for (int i = 0; i < MapSize; i++)
                 {
