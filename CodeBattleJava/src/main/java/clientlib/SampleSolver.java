@@ -162,26 +162,6 @@ public class SampleSolver extends Solver {
     @Override
     public String move() {
 
-        getPlayerTankCoordinates();
-        getOtherPlayersTanks();
-        getBotsTanks();
-        getBullets();
-        getWormholes();
-        getConstructions();
-        getDestroyedConstructions();
-        getBogs();
-        getSands();
-        getMoats();
-        getHedgehogs();
-        getWalls();
-        getBarriers();
-        getAmmoBonuses();
-        getMedKitBonuses();
-        isNear(14, 5, CONSTRUCTION);
-        isBarrierAt(13, 14);
-        isAt(0,0, BATTLE_WALL); // этот ли эл в этой точке
-        countNear(14,5, CONSTRUCTION); // сколько таких элементов около этой точки
-
         return left();
     }
 }
