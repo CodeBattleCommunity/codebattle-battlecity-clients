@@ -1,6 +1,8 @@
 package clientlib;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import static clientlib.Elements.*;
 
 
@@ -25,7 +27,7 @@ public class SampleSolver extends Solver {
     }
 
     public List<Point> getBullets(){
-        List<Point> bullets = getCoordinates(BULLET);
+        List<Point> bullets = getCoordinates(BULLET_UP, BULLET_DOWN, BULLET_LEFT, BULLET_RIGHT);
         return bullets;
     }
 
@@ -148,17 +150,11 @@ public class SampleSolver extends Solver {
 
 
     public List<Point> getCoordinates(Elements... findElements){
-        Set<Elements> findSetElements = new HashSet<>(Arrays.asList(findElements));
-        List<Point> elementsCoordinates = new ArrayList<Point>();
-
-        for (int y = 0; y < field.length; y++) {
-            for (int x = 0; x < field.length; x++) {
-                if (findSetElements.contains(field[x][y])) {
-                    elementsCoordinates.add(new Point(x,y));
-                }
-            }
-        }
-        return elementsCoordinates;
+        return Arrays.stream(findElements)
+                .map(el -> mapElements.get(el))
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
 

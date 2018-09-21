@@ -37,7 +37,10 @@ public enum Elements {
 
     HEDGEHOG('ͱ'),
 
-    BULLET('•'),
+    BULLET_UP('↥'),
+    BULLET_RIGHT('↦'),
+    BULLET_DOWN('↧'),
+    BULLET_LEFT('↤'),
 
     TANK_UP('▲'),
     TANK_RIGHT('►'),
