@@ -39,7 +39,7 @@ class SampleSolver : Solver() {
     }
 
     fun getBullets(): List<Point> {
-        return getCoordinatesPoint(board, BULLET)
+        return getCoordinatesElements(arrayOf(BULLET, BULLET_UP, BULLET_RIGHT, BULLET_DOWN, BULLET_LEFT))
     }
 
     fun getWormholes(): List<Point> {

@@ -47,12 +47,12 @@ enum class Elements(val element: Char, val power: Int = 0) {
     MOAT_HORIZONTAL('='),
     MOAT_VERTICAL('‖'),
     HEDGEHOG('ͱ'),
-    BOG('@');
+    BOG('@'),
 
     BULLET_UP('↥'),
     BULLET_RIGHT('↦'),
     BULLET_DOWN('↧'),
-    BULLET_LEFT('↤')
+    BULLET_LEFT('↤');
 
     override fun toString(): String = element.toString()
 }
