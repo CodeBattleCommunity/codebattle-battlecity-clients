@@ -67,7 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Direction.cs" />
     <Compile Include="Elements.cs" />
     <Compile Include="CodeBattleNetLibrary.cs" />
     <Compile Include="Point.cs" />

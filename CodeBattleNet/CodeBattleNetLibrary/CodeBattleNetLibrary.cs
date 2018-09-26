@@ -75,6 +75,18 @@ namespace CodeBattleNetLibrary
             _socket.Send(commands);
         }
 
+        public string Up() => "UP";
+
+        public string Down() => "DOWN";
+
+        public string Right() => "RIGHT";
+
+        public string Left() => "LEFT";
+
+        public string Act() => "ACT";
+
+        public string Blank() => "";
+
         public Point GetPlayerTank() => new Point(PlayerX, PlayerY);
 
         public List<Point> GetOtherPlayersTanks() => 
