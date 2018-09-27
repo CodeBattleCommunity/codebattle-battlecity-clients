@@ -15,7 +15,7 @@
 
 #### Примеры клиентов (ботов)
 - Java - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleJava 
-- JavaScript - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleJs
+- JavaScript - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleJavascript
 - C# - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleNet
 - Python (3.0+) - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattlePython
 - Kotlin - https://github.com/IzhevskCodeBattle/codebattle-battlecity-clients/tree/master/CodeBattleKotlin
