@@ -84,7 +84,7 @@ class WebSocketRunner(val solver: Solver) {
 
     @Throws(Exception::class)
     private fun tryToConnect(server: String, userName: String, passwordHash: String, urlPattern: Pattern, client: WebSocketClient) {
-        val uri = URI("$server?user=$userName&pwd=$passwordHash")
+        val uri = URI("$server?user=$userName&code=$passwordHash")
         print(String.format("Connecting '%s' to '%s'...", userName, uri))
         if (connection != null) {
             connection!!.close()
