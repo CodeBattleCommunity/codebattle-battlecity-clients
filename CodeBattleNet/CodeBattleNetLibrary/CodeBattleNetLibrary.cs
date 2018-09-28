@@ -167,7 +167,7 @@ namespace CodeBattleNetLibrary
 
         public bool IsAnyOfAt(int x, int y, params Elements[] elements) => Array.Exists(elements, element => IsAt(x, y, element));
 
-        public bool IsBarrierAt(int x, int y) => GetBarriers().Exists(barrier => IsAt(barrier.X, barrier.Y, Map[x, y]));
+        public bool IsBarrierAt(int x, int y) => GetBarriers().Exists(barrier => IsAt(x, y, Map[barrier.X, barrier.Y]));
 
         public bool IsNear(int x, int y, Elements element) => 
             IsAt(x - 1, y, element) ||
