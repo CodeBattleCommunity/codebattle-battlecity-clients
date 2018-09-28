@@ -12,8 +12,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class WebSocketRunner {
-    public static final String WS_URI_PATTERN = "ws://%s/codenjoy-contest/ws"; // ws://%s/codenjoy-contest/ws
+    public static final String WS_URI_PATTERN = "ws://%s/codenjoy-contest/ws";
+
 
     private static boolean printToConsole = true;
     private static Map<String, WebSocketRunner> clients = new ConcurrentHashMap<>();
@@ -71,7 +73,7 @@ public class WebSocketRunner {
             @Override
             public void run() {
                 printReconnect();
-                connectLoop(server, userName, passwordHash, urlPattern, client); // наверно здесь будут переодические отправки данных на сервер
+                connectLoop(server, userName, passwordHash, urlPattern, client);
             }
         };
 
