@@ -1,7 +1,6 @@
 package clientlib;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static clientlib.Elements.*;
 
@@ -11,6 +10,9 @@ public class SampleSolver extends Solver {
 
     public List<Point> getPlayerTankCoordinates(){
             List<Point> playerTank = getCoordinates(TANK_DOWN, TANK_UP, TANK_LEFT, TANK_RIGHT);
+            if(playerTank.size() == 0){
+                playerTank.add(new Point(0,0));
+            }
             return playerTank;
         }
 
@@ -19,7 +21,6 @@ public class SampleSolver extends Solver {
         List<Point> otherPlayers = getCoordinates(OTHER_TANK_DOWN, OTHER_TANK_UP, OTHER_TANK_LEFT, OTHER_TANK_RIGHT);
         return otherPlayers;
     }
-
 
     public List<Point> getBotsTanks(){
         List<Point> bots = getCoordinates(AI_TANK_DOWN, AI_TANK_UP, AI_TANK_LEFT, AI_TANK_RIGHT);
@@ -110,19 +111,23 @@ public class SampleSolver extends Solver {
     }
 
     public boolean isNear(int x, int y, Elements el){
-        boolean isNear = false;
-        if(field[x+1][y] == el ||
-                field[x-1][y] == el ||
-                field[x][y-1] == el ||
-                field[x][y+1] == el){
-            isNear = true;
-        }
-
-        return isNear;
+        return isAt(x+1,y,el) ||
+                isAt(x-1,y, el) ||
+                isAt(x, y-1, el) ||
+                isAt(x, y+1, el);
     }
 
     public boolean isBarrierAt(int x, int y){
         return getBarriers().contains(new Point(x,y));
+    }
+
+    public boolean isAnyOfAt(int x, int y, Elements... elements){
+        boolean result = false;
+        for (Elements el : elements){
+            result = isAt(x, y, el);
+            if(result) break;
+        }
+        return result;
     }
 
     public boolean isAt(int x, int y, Elements element){
@@ -135,11 +140,10 @@ public class SampleSolver extends Solver {
 
     public int countNear(int x, int y, Elements element){
         int counter = 0;
-        if(field[x+1][y] == element) counter++;
-        if(field[x-1][y] == element) counter++;
-        if(field[x][y+1] == element) counter++;
-        if(field[x][y-1] == element) counter++;
-
+        if(isAt(x+1, y, element)) counter++;
+        if(isAt(x-1, y, element)) counter++;
+        if(isAt(x, y+1, element)) counter++;
+        if(isAt(x, y-1, element)) counter++;
         return counter;
     }
 
@@ -148,20 +152,28 @@ public class SampleSolver extends Solver {
     }
 
 
+    public List<Point> getCoordinates(Elements... searchElements){
+        Set<Elements> searchSetElements = new HashSet<>(Arrays.asList(searchElements));
+        List<Point> elementsCoordinates = new ArrayList<>();
 
-    public List<Point> getCoordinates(Elements... findElements){
-        return Arrays.stream(findElements)
-                .map(el -> mapElements.get(el))
-                .filter(Objects::nonNull)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+        for (int y = 0; y < field.length; y++) {
+            for (int x = 0; x < field.length; x++) {
+                if (searchSetElements.contains(field[x][y])) {
+                    elementsCoordinates.add(new Point(x,y));
+                }
+            }
+        }
+        return elementsCoordinates;
     }
+
+
+
 
 
 
     @Override
     public String move() {
-
         return left();
     }
+
 }

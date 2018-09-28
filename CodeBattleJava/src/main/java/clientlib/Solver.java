@@ -33,8 +33,7 @@ public abstract class Solver {
         for (int y = 0; y < size ; y++) {
             int dy = y * size;
             for (int x = 0; x < size; x++) {
-                mapElements.computeIfAbsent(field[x][y], elements -> new ArrayList<>());
-                mapElements.get(field[x][y]).add(new Point(x, y));
+                field[x][y] = Elements.valueOf(temp[dy + x]);
             }
         }
 
